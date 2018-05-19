@@ -111,7 +111,8 @@
 				{"name": "klorid", "formula": "Cl", "naboj": 1, "needsParentheses": true},
 				{"name": "bromid", "formula": "Br", "naboj": 1, "needsParentheses": true},
 				{"name": "jodid", "formula": "I", "naboj": 1, "needsParentheses": true},
-				{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "naboj": 1, "needsParentheses": true}
+				{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "naboj": 1, "needsParentheses": true},
+				{"name": "hidroksid", "formula": "OH", "naboj": 1, "needsParentheses": true}
 			]
 
 			var kationi_common = [
@@ -124,7 +125,10 @@
 				{"name": "Kalcijev", "formula": "Ca", "naboj": 2},
 				{"name": "Stroncijev", "formula": "Sr", "naboj": 2},
 				{"name": "Barijev", "formula": "Ba", "naboj": 2},
-				{"name": "Amonijev", "formula": "NH<sub>4</sub>", "naboj": 1, "needsParentheses": true}
+				{"name": "Aluminijev", "formula": "Al", "naboj": 3},
+				{"name": "Amonijev", "formula": "NH<sub>4</sub>", "naboj": 1, "needsParentheses": true},
+				{"name": "Srebrov", "formula": "Ag", "naboj": 1},
+				{"name": "Cinkov", "formula": "Zn", "naboj": 2}
 			]
 
 			var kationi_prehoda = [
@@ -137,7 +141,15 @@
 				{"name": "Kobaltov", "formula": "Co", "naboj": [3, 2]},
 				{"name": "Nikljev", "formula": "Ni", "naboj": [3, 2]},
 				{"name": "Bakrov", "formula": "Cu", "naboj": [2, 1]},
-				{"name": "Cinkov", "formula": "Zn", "naboj": [2]}
+				{"name": "Itrijev", "formula": "Y", "naboj": [3]},
+				{"name": "Cikronijev", "formula": "Zr", "naboj": [4]},
+				{"name": "Molibdenov", "formula": "Mo", "naboj": [6, 3, 2]},
+				{"name": "Paladijev", "formula": "Pd", "naboj": [4, 2]},
+				{"name": "Kadmijev", "formula": "Cd", "naboj": [2]},
+				{"name": "Živosrebrov", "formula": "Hg", "naboj": [2, 1]},
+				{"name": "Talijev", "formula": "Tl", "naboj": [3, 1]},
+				{"name": "Svinčev", "formula": "Pb", "naboj": [4, 2]},
+				{"name": "Volframov", "formula": "W", "naboj": [6, 4, 3, 2]}
 			]
 
 			var pendingPair = getRandomPair();
@@ -169,7 +181,7 @@
 				var anion = anioni[getRandomInt(0, anioni.length-1)];
 				var kation = kationi_common[getRandomInt(0, kationi_common.length-1)];
 
-				if (Math.random() > 0.3) { /* 70% chance of uncommon */
+				if (Math.random() > 0.6) { /* 40% chance of uncommon */
 					var rand = kationi_prehoda[getRandomInt(0, kationi_common.length-1)];
 					var naboj = rand.naboj[getRandomInt(0, rand.naboj.length-1)];
 					kation = {"name": rand.name+"("+romanize(naboj)+")", "formula": rand.formula, "naboj": naboj};
