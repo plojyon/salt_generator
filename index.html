@@ -144,7 +144,8 @@
 			var isPending = false;
 			var score = -0.5;
 			pendPair(getRandomPair());
-			document.getElementsByTagName('table')[0].addEventListener("click", function() { pendPair(getRandomPair()); });
+			document.getElementsByTagName('table')[0].addEventListener("click", function(e) { e.preventDefault(); pendPair(getRandomPair()); });
+			document.getElementsByTagName('table')[0].addEventListener("mousedown", function(e) { e.preventDefault(); });
 
 			function pendPair(newPair) {
 				if (isPending) revealPair(pendingPair);
