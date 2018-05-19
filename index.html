@@ -7,17 +7,26 @@
 	<body>
 
 		<center>
+			<br>
+			<br>
+			<br>
+			<br>
 			<table border="1">
 				<tr>
-					<td class="ime">Ime</td><td>Formula</td>
+					<td>Name</td><td>Formula</td><!--<td>Type</td>-->
 				</tr>
 				<tr>
-					<td class="ime" id="name">Error</td><td id="formula">Er</td>
+					<td id="name">Error</td><td id="formula">Er</td><!--<td id="type">Neutral/Acidic/Alkaline Salt</td>-->
 				</tr>
 			</table>
+
 			<h5>Click anywhere on the table to continue</h5>
+
 			<p>Score: <span id="score">0</span></p>
-			<br><br>
+
+			<br>
+			<br>
+
 			Guessing:
 			<select id="guessing">
 				<option value="formula" selected>formula</option>
@@ -28,15 +37,13 @@
 
 
 		<style>
-			table {
-				width: 30em;
-				margin-top: 5em;
-				cursor: pointer;
-			}
 			tbody {
+				width: 40em;
 				height: 3.5em;
 				display: flex;
 				flex-direction: column;
+				cursor: pointer;
+				text-align: center;
 			}
 			tr:first-child td {
 				font-weight: bold;
@@ -44,25 +51,29 @@
 			}
 			tr {
 				display: flex;
+			}
+			tr, td {
 				flex: 1;
 			}
-			td {
-				flex: 1;
-				text-align: center;
-			}
-			.ime {
+			td:first-child {
 				flex: 2;
 			}
 		</style>
 
 
 		<script>
+			/**********************
+				HELPER FUNCTIONS
+			**********************/
+			// get a random integer in range (min and max inclusive)
 			function getRandomInt(min, max) {
 				return Math.floor(Math.random() * (max - min + 1)) + min;
 			}
+			// get the lowest common multiple of two integers
 			function lcm(x, y) {
 				return (!x || !y) ? 0 : Math.abs((x * y) / gcd_two_numbers(x, y));
 			}
+			// get the greatest common denominator of two integers
 			function gcd_two_numbers(x, y) {
 				x = Math.abs(x);
 				y = Math.abs(y);
@@ -73,6 +84,7 @@
 				}
 				return x;
 			}
+			// return a string representing a (positive) integer in roman numeral system
 			function romanize(num) {
 				if (!+num)
 					return NaN;
@@ -87,85 +99,88 @@
 				return Array(+digits.join("") + 1).join("M") + roman;
 			}
 
-
+			// list of anions
 			var anioni = [
-				{"name": "cianid", "formula": "CN", "naboj": 1, "needsParentheses": true},
-				{"name": "sulfid", "formula": "F", "naboj": 2},
-				{"name": "hidrogensulfid", "formula": "HF", "naboj": 1, "needsParentheses": true},
-				{"name": "nitrat(V)", "formula": "NO<sub>2</sub>", "naboj": 1, "needsParentheses": true},
-				{"name": "sulfat(VI)", "formula": "SO<sub>4</sub>", "naboj": 2, "needsParentheses": true},
-				{"name": "hidrogensulfat(VI)", "formula": "HSO<sub>4</sub>", "naboj": 1, "needsParentheses": true},
-				{"name": "sulfat(IV)", "formula": "SO<sub>3</sub>", "naboj": 2, "needsParentheses": true},
-				{"name": "hidrogensulfat(IV)", "formula": "HSO<sub>3</sub>", "naboj": 1, "needsParentheses": true},
-				{"name": "karbonat", "formula": "CO<sub>3</sub>", "naboj": 2, "needsParentheses": true},
-				{"name": "hidrogenkarbonat", "formula": "HCO<sub>3</sub>", "naboj": 1, "needsParentheses": true},
-				{"name": "fosfat(V)", "formula": "PO<sub>4</sub>", "naboj": 3, "needsParentheses": true},
-				{"name": "hidrogenfosfat(V)", "formula": "HPO<sub>4</sub>", "naboj": 2, "needsParentheses": true},
-				{"name": "dihidrogenfosfat(V)", "formula": "H<sub>2</sub>PO<sub>4</sub>", "naboj": 1, "needsParentheses": true},
-				{"name": "fosfat(III)", "formula": "PO<sub>3</sub>", "naboj": 3, "needsParentheses": true},
-				{"name": "hidrogenfosfat(III)", "formula": "HPO<sub>3</sub>", "naboj": 2, "needsParentheses": true},
-				{"name": "dihidrogenfosfat(III)", "formula": "H<sub>2</sub>PO<sub>3</sub>", "naboj": 1, "needsParentheses": true},
-				{"name": "klorat(I)", "formula": "ClO", "naboj": 1, "needsParentheses": true},
-				{"name": "bromat(I)", "formula": "BrO", "naboj": 1, "needsParentheses": true},
-				{"name": "jodat(I)", "formula": "IO", "naboj": 1, "needsParentheses": true},
-				{"name": "klorid", "formula": "Cl", "naboj": 1, "needsParentheses": true},
-				{"name": "bromid", "formula": "Br", "naboj": 1, "needsParentheses": true},
-				{"name": "jodid", "formula": "I", "naboj": 1, "needsParentheses": true},
-				{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "naboj": 1, "needsParentheses": true},
-				{"name": "hidroksid", "formula": "OH", "naboj": 1, "needsParentheses": true}
+				{"name": "cianid", "formula": "CN", "charge": 1, "needsParentheses": true, "strength": "weak"}, // is strength an integer?
+				{"name": "sulfid", "formula": "F", "charge": 2}, // TODO: add strength attribute
+				{"name": "hidrogensulfid", "formula": "HF", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "nitrat(V)", "formula": "NO<sub>2</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "sulfat(VI)", "formula": "SO<sub>4</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "hidrogensulfat(VI)", "formula": "HSO<sub>4</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "sulfat(IV)", "formula": "SO<sub>3</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "hidrogensulfat(IV)", "formula": "HSO<sub>3</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "karbonat", "formula": "CO<sub>3</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "hidrogenkarbonat", "formula": "HCO<sub>3</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "fosfat(V)", "formula": "PO<sub>4</sub>", "charge": 3, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "hidrogenfosfat(V)", "formula": "HPO<sub>4</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "dihidrogenfosfat(V)", "formula": "H<sub>2</sub>PO<sub>4</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "fosfat(III)", "formula": "PO<sub>3</sub>", "charge": 3, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "hidrogenfosfat(III)", "formula": "HPO<sub>3</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "dihidrogenfosfat(III)", "formula": "H<sub>2</sub>PO<sub>3</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "klorat(I)", "formula": "ClO", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "bromat(I)", "formula": "BrO", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "jodat(I)", "formula": "IO", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "klorid", "formula": "Cl", "charge": 1}, // TODO: add strength attribute
+				{"name": "bromid", "formula": "Br", "charge": 1}, // TODO: add strength attribute
+				{"name": "jodid", "formula": "I", "charge": 1}, // TODO: add strength attribute
+				{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
 			]
 
-			var kationi_common = [
-				{"name": "Litijev", "formula": "Li", "naboj": 1},
-				{"name": "Natrijev", "formula": "Na", "naboj": 1},
-				{"name": "Kalijev", "formula": "K", "naboj": 1},
-				{"name": "Rubidijev", "formula": "Rb", "naboj": 1},
-				{"name": "Berilijev", "formula": "Be", "naboj": 2},
-				{"name": "Magnezijev", "formula": "Mg", "naboj": 2},
-				{"name": "Kalcijev", "formula": "Ca", "naboj": 2},
-				{"name": "Stroncijev", "formula": "Sr", "naboj": 2},
-				{"name": "Barijev", "formula": "Ba", "naboj": 2},
-				{"name": "Aluminijev", "formula": "Al", "naboj": 3},
-				{"name": "Amonijev", "formula": "NH<sub>4</sub>", "naboj": 1, "needsParentheses": true},
-				{"name": "Srebrov", "formula": "Ag", "naboj": 1},
-				{"name": "Cinkov", "formula": "Zn", "naboj": 2}
+			// list of common cations
+			var cations_common = [
+				{"name": "Litijev", "formula": "Li", "charge": 1}, // TODO: add strength attribute
+				{"name": "Natrijev", "formula": "Na", "charge": 1}, // TODO: add strength attribute
+				{"name": "Kalijev", "formula": "K", "charge": 1}, // TODO: add strength attribute
+				{"name": "Rubidijev", "formula": "Rb", "charge": 1}, // TODO: add strength attribute
+				{"name": "Berilijev", "formula": "Be", "charge": 2}, // TODO: add strength attribute
+				{"name": "Magnezijev", "formula": "Mg", "charge": 2}, // TODO: add strength attribute
+				{"name": "Kalcijev", "formula": "Ca", "charge": 2}, // TODO: add strength attribute
+				{"name": "Stroncijev", "formula": "Sr", "charge": 2}, // TODO: add strength attribute
+				{"name": "Barijev", "formula": "Ba", "charge": 2}, // TODO: add strength attribute
+				{"name": "Aluminijev", "formula": "Al", "charge": 3}, // TODO: add strength attribute
+				{"name": "Amonijev", "formula": "NH<sub>4</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "Srebrov", "formula": "Ag", "charge": 1}, // TODO: add strength attribute
+				{"name": "Cinkov", "formula": "Zn", "charge": 2} // TODO: add strength attribute
 			]
 
-			var kationi_prehoda = [
-				{"name": "Skandijev", "formula": "Sc", "naboj": [3]},
-				{"name": "Titanov", "formula": "Ti", "naboj": [4, 3, 2]},
-				{"name": "Vanadijev", "formula": "V", "naboj": [5, 4, 3, 2]},
-				{"name": "Kromov", "formula": "Cr", "naboj": [6, 3, 2]},
-				{"name": "Manganov", "formula": "Mn", "naboj": [7, 4, 3, 2]},
-				{"name": "Železov", "formula": "Fe", "naboj": [3, 2]},
-				{"name": "Kobaltov", "formula": "Co", "naboj": [3, 2]},
-				{"name": "Nikljev", "formula": "Ni", "naboj": [3, 2]},
-				{"name": "Bakrov", "formula": "Cu", "naboj": [2, 1]},
-				{"name": "Itrijev", "formula": "Y", "naboj": [3]},
-				{"name": "Cikronijev", "formula": "Zr", "naboj": [4]},
-				{"name": "Molibdenov", "formula": "Mo", "naboj": [6, 3, 2]},
-				{"name": "Paladijev", "formula": "Pd", "naboj": [4, 2]},
-				{"name": "Kadmijev", "formula": "Cd", "naboj": [2]},
-				{"name": "Živosrebrov", "formula": "Hg", "naboj": [2, 1]},
-				{"name": "Talijev", "formula": "Tl", "naboj": [3, 1]},
-				{"name": "Svinčev", "formula": "Pb", "naboj": [4, 2]},
-				{"name": "Volframov", "formula": "W", "naboj": [6, 4, 3, 2]}
+			var cations_advanced = [
+				{"name": "Skandijev", "formula": "Sc", "charge": [3]}, // TODO: add strength attribute
+				{"name": "Titanov", "formula": "Ti", "charge": [4, 3, 2]}, // TODO: add strength attribute
+				{"name": "Vanadijev", "formula": "V", "charge": [5, 4, 3, 2]}, // TODO: add strength attribute
+				{"name": "Kromov", "formula": "Cr", "charge": [6, 3, 2]}, // TODO: add strength attribute
+				{"name": "Manganov", "formula": "Mn", "charge": [7, 4, 3, 2]}, // TODO: add strength attribute
+				{"name": "Železov", "formula": "Fe", "charge": [3, 2]}, // TODO: add strength attribute
+				{"name": "Kobaltov", "formula": "Co", "charge": [3, 2]}, // TODO: add strength attribute
+				{"name": "Nikljev", "formula": "Ni", "charge": [3, 2]}, // TODO: add strength attribute
+				{"name": "Bakrov", "formula": "Cu", "charge": [2, 1]}, // TODO: add strength attribute
+				{"name": "Itrijev", "formula": "Y", "charge": [3]}, // TODO: add strength attribute
+				{"name": "Cikronijev", "formula": "Zr", "charge": [4]}, // TODO: add strength attribute
+				{"name": "Molibdenov", "formula": "Mo", "charge": [6, 3, 2]}, // TODO: add strength attribute
+				{"name": "Paladijev", "formula": "Pd", "charge": [4, 2]}, // TODO: add strength attribute
+				{"name": "Kadmijev", "formula": "Cd", "charge": [2]}, // TODO: add strength attribute
+				{"name": "Živosrebrov", "formula": "Hg", "charge": [2, 1]}, // TODO: add strength attribute
+				{"name": "Talijev", "formula": "Tl", "charge": [3, 1]}, // TODO: add strength attribute
+				{"name": "Svinčev", "formula": "Pb", "charge": [4, 2]}, // TODO: add strength attribute
+				{"name": "Volframov", "formula": "W", "charge": [6, 4, 3, 2]} // TODO: add strength attribute
 			]
 
-			var pendingPair = getRandomPair();
-			var isPending = false;
-			var score = -0.5;
-			pendPair(getRandomPair());
+			var pendingPair = getRandomPair(); // the pair currently being displayed
+			var isPending = false; // is the person currently guessing? false means they're looking at the solution
+			var score = -0.5; // score will be the round-down of this
+			pendPair(getRandomPair()); // queue up a new random pair
 			document.getElementsByTagName('table')[0].addEventListener("click", function(e) { e.preventDefault(); pendPair(getRandomPair()); });
-			document.getElementsByTagName('table')[0].addEventListener("mousedown", function(e) { e.preventDefault(); });
+			document.getElementsByTagName('table')[0].addEventListener("mousedown", function(e) { e.preventDefault(); }); // disable selections
 
+			// queue a new anion-cation pair to display - if the solution is being shown, replace it with the new newPair
+			// otherwise just show the solution
 			function pendPair(newPair) {
 				if (isPending) revealPair(pendingPair);
 				else hidePair(newPair);
 				isPending = !isPending;
-				score += 0.5;
-				document.getElementById("score").innerHTML = Math.ceil(score);
+				score += 0.5; // the score goes up only every 2 function calls (no score for merely displaying the solution)
+				document.getElementById("score").innerHTML = Math.ceil(score); // increment the score
 			}
+			// puts up a new pair and hides the infomation the user is supposed to guess (retrieves settings from DOM)
 			function hidePair(p) {
 				pendingPair = p;
 				document.getElementById("name").innerHTML = p[0];
@@ -177,44 +192,49 @@
 				else
 					document.getElementById("name").innerHTML = "?";
 			}
+			// generates a random cation-anion pair from the lists defined above
 			function getRandomPair() {
 				var anion = anioni[getRandomInt(0, anioni.length-1)];
-				var kation = kationi_common[getRandomInt(0, kationi_common.length-1)];
+				var cation = cations_common[getRandomInt(0, cations_common.length-1)];
 
-				if (Math.random() > 0.6) { /* 40% chance of uncommon */
-					var rand = kationi_prehoda[getRandomInt(0, kationi_common.length-1)];
-					var naboj = rand.naboj[getRandomInt(0, rand.naboj.length-1)];
-					kation = {"name": rand.name+"("+romanize(naboj)+")", "formula": rand.formula, "naboj": naboj};
+				if (Math.random() > 0.6) { /* 40% chance of uncommon cation */
+					var selection = cations_advanced[getRandomInt(0, cations_common.length-1)]; // get a random uncommon cation from the list
+					var charge = selection.charge[getRandomInt(0, selection.charge.length-1)]; // pick a random charge of all available charges
+					cation = {"name": selection.name+"("+romanize(charge)+")", "formula": selection.formula, "charge": charge}; // create a cation object
 				}
 
-				var formula = createFormula(anion, kation);
+				var formula = createFormula(anion, cation);
 
-				return [kation.name + " " + anion.name, formula];
+				return [cation.name + " " + anion.name, formula];
 			}
+			// reveals the solution of the problem being shown and logs it down
 			function revealPair(pair) {
 				document.getElementById("name").innerHTML = pair[0];
 				document.getElementById("formula").innerHTML = pair[1];
-
+				// in case the user double clicks by accident, the log is available
 				console.log(pair[0].split('<sub>').join('').split('</sub>').join('') + " : " + pair[1].split('<sub>').join('').split('</sub>').join(''));
 			}
-			function createFormula(anion, kation) {
-				var veckratnik = lcm(Math.abs(anion.naboj), Math.abs(kation.naboj));
-				var nabojAnion  = veckratnik /  anion.naboj;
-				var nabojKation = veckratnik / kation.naboj;
+			// takes a anion-cation pair and forges them together into a formula
+			// it takes into account the ion charge to calculate the quantities
+			// and adds the parentheses if needed. Returns string - combined formula
+			function createFormula(anion, cation) {
+				var veckratnik = lcm(Math.abs(anion.charge), Math.abs(cation.charge));
+				var chargeAnion  = veckratnik /  anion.charge;
+				var chargecation = veckratnik / cation.charge;
 
 				var an = anion.formula;
-				if (nabojAnion != 1) {
+				if (chargeAnion != 1) {
 					if (anion.needsParentheses) an = "(" + an + ")";
-					an += "<sub>" + nabojAnion + "</sub>";
+					an += "<sub>" + chargeAnion + "</sub>";
 				}
 
-				var ka = kation.formula;
-				if (nabojKation != 1) {
-					if (kation.needsParentheses) ka = "(" + ka + ")";
-					ka += "<sub>" + nabojKation + "</sub>";
+				var ca = cation.formula;
+				if (chargecation != 1) {
+					if (cation.needsParentheses) ca = "(" + ca + ")";
+					ca += "<sub>" + chargecation + "</sub>";
 				}
 
-				return ka + an;
+				return ca + an;
 			}
 		</script>
 	</body>
