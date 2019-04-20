@@ -101,67 +101,67 @@
 
 			// list of anions
 			var anioni = [
-				{"name": "cianid", "formula": "CN", "charge": 1, "needsParentheses": true, "strength": "weak"}, // is strength an integer?
-				{"name": "sulfid", "formula": "F", "charge": 2}, // TODO: add strength attribute
-				{"name": "hidrogensulfid", "formula": "HF", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "nitrat(V)", "formula": "NO<sub>2</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "sulfat(VI)", "formula": "SO<sub>4</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "hidrogensulfat(VI)", "formula": "HSO<sub>4</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "sulfat(IV)", "formula": "SO<sub>3</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "hidrogensulfat(IV)", "formula": "HSO<sub>3</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "karbonat", "formula": "CO<sub>3</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "hidrogenkarbonat", "formula": "HCO<sub>3</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "fosfat(V)", "formula": "PO<sub>4</sub>", "charge": 3, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "hidrogenfosfat(V)", "formula": "HPO<sub>4</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "dihidrogenfosfat(V)", "formula": "H<sub>2</sub>PO<sub>4</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "fosfat(III)", "formula": "PO<sub>3</sub>", "charge": 3, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "hidrogenfosfat(III)", "formula": "HPO<sub>3</sub>", "charge": 2, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "dihidrogenfosfat(III)", "formula": "H<sub>2</sub>PO<sub>3</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "klorat(I)", "formula": "ClO", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "bromat(I)", "formula": "BrO", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "jodat(I)", "formula": "IO", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "klorid", "formula": "Cl", "charge": 1}, // TODO: add strength attribute
-				{"name": "bromid", "formula": "Br", "charge": 1}, // TODO: add strength attribute
-				{"name": "jodid", "formula": "I", "charge": 1}, // TODO: add strength attribute
-				{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
+				{"name": "cianid", "formula": "CN", "charge": 1, "needsParentheses": true, "strength": "weak"}, // TODO: Strength?
+				{"name": "sulfid", "formula": "S", "charge": 2},
+				{"name": "hidrogensulfid", "formula": "HS", "charge": 1, "needsParentheses": true},
+				{"name": "nitrat(V)", "formula": "NO<sub>2</sub>", "charge": 1, "needsParentheses": true},
+				{"name": "sulfat(VI)", "formula": "SO<sub>4</sub>", "charge": 2, "needsParentheses": true},
+				{"name": "hidrogensulfat(VI)", "formula": "HSO<sub>4</sub>", "charge": 1, "needsParentheses": true},
+				{"name": "sulfat(IV)", "formula": "SO<sub>3</sub>", "charge": 2, "needsParentheses": true},
+				{"name": "hidrogensulfat(IV)", "formula": "HSO<sub>3</sub>", "charge": 1, "needsParentheses": true},
+				{"name": "karbonat", "formula": "CO<sub>3</sub>", "charge": 2, "needsParentheses": true},
+				{"name": "hidrogenkarbonat", "formula": "HCO<sub>3</sub>", "charge": 1, "needsParentheses": true},
+				{"name": "fosfat(V)", "formula": "PO<sub>4</sub>", "charge": 3, "needsParentheses": true},
+				{"name": "hidrogenfosfat(V)", "formula": "HPO<sub>4</sub>", "charge": 2, "needsParentheses": true},
+				{"name": "dihidrogenfosfat(V)", "formula": "H<sub>2</sub>PO<sub>4</sub>", "charge": 1, "needsParentheses": true},
+				{"name": "fosfat(III)", "formula": "PO<sub>3</sub>", "charge": 3, "needsParentheses": true},
+				{"name": "hidrogenfosfat(III)", "formula": "HPO<sub>3</sub>", "charge": 2, "needsParentheses": true},
+				{"name": "dihidrogenfosfat(III)", "formula": "H<sub>2</sub>PO<sub>3</sub>", "charge": 1, "needsParentheses": true},
+				{"name": "klorat(I)", "formula": "ClO", "charge": 1, "needsParentheses": true},
+				{"name": "bromat(I)", "formula": "BrO", "charge": 1, "needsParentheses": true},
+				{"name": "jodat(I)", "formula": "IO", "charge": 1, "needsParentheses": true},
+				{"name": "klorid", "formula": "Cl", "charge": 1},
+				{"name": "bromid", "formula": "Br", "charge": 1},
+				{"name": "jodid", "formula": "I", "charge": 1},
+				{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "charge": 1, "needsParentheses": true},
 			]
 
 			// list of common cations
 			var cations_common = [
-				{"name": "Litijev", "formula": "Li", "charge": 1}, // TODO: add strength attribute
-				{"name": "Natrijev", "formula": "Na", "charge": 1}, // TODO: add strength attribute
-				{"name": "Kalijev", "formula": "K", "charge": 1}, // TODO: add strength attribute
-				{"name": "Rubidijev", "formula": "Rb", "charge": 1}, // TODO: add strength attribute
-				{"name": "Berilijev", "formula": "Be", "charge": 2}, // TODO: add strength attribute
-				{"name": "Magnezijev", "formula": "Mg", "charge": 2}, // TODO: add strength attribute
-				{"name": "Kalcijev", "formula": "Ca", "charge": 2}, // TODO: add strength attribute
-				{"name": "Stroncijev", "formula": "Sr", "charge": 2}, // TODO: add strength attribute
-				{"name": "Barijev", "formula": "Ba", "charge": 2}, // TODO: add strength attribute
-				{"name": "Aluminijev", "formula": "Al", "charge": 3}, // TODO: add strength attribute
-				{"name": "Amonijev", "formula": "NH<sub>4</sub>", "charge": 1, "needsParentheses": true}, // TODO: add strength attribute
-				{"name": "Srebrov", "formula": "Ag", "charge": 1}, // TODO: add strength attribute
-				{"name": "Cinkov", "formula": "Zn", "charge": 2} // TODO: add strength attribute
+				{"name": "Litijev", "formula": "Li", "charge": 1},
+				{"name": "Natrijev", "formula": "Na", "charge": 1},
+				{"name": "Kalijev", "formula": "K", "charge": 1},
+				{"name": "Rubidijev", "formula": "Rb", "charge": 1},
+				{"name": "Berilijev", "formula": "Be", "charge": 2},
+				{"name": "Magnezijev", "formula": "Mg", "charge": 2},
+				{"name": "Kalcijev", "formula": "Ca", "charge": 2},
+				{"name": "Stroncijev", "formula": "Sr", "charge": 2},
+				{"name": "Barijev", "formula": "Ba", "charge": 2},
+				{"name": "Aluminijev", "formula": "Al", "charge": 3},
+				{"name": "Amonijev", "formula": "NH<sub>4</sub>", "charge": 1, "needsParentheses": true},
+				{"name": "Srebrov", "formula": "Ag", "charge": 1},
+				{"name": "Cinkov", "formula": "Zn", "charge": 2}
 			]
 
 			var cations_advanced = [
-				{"name": "Skandijev", "formula": "Sc", "charge": [3]}, // TODO: add strength attribute
-				{"name": "Titanov", "formula": "Ti", "charge": [4, 3, 2]}, // TODO: add strength attribute
-				{"name": "Vanadijev", "formula": "V", "charge": [5, 4, 3, 2]}, // TODO: add strength attribute
-				{"name": "Kromov", "formula": "Cr", "charge": [6, 3, 2]}, // TODO: add strength attribute
-				{"name": "Manganov", "formula": "Mn", "charge": [7, 4, 3, 2]}, // TODO: add strength attribute
-				{"name": "Železov", "formula": "Fe", "charge": [3, 2]}, // TODO: add strength attribute
-				{"name": "Kobaltov", "formula": "Co", "charge": [3, 2]}, // TODO: add strength attribute
-				{"name": "Nikljev", "formula": "Ni", "charge": [3, 2]}, // TODO: add strength attribute
-				{"name": "Bakrov", "formula": "Cu", "charge": [2, 1]}, // TODO: add strength attribute
-				{"name": "Itrijev", "formula": "Y", "charge": [3]}, // TODO: add strength attribute
-				{"name": "Cikronijev", "formula": "Zr", "charge": [4]}, // TODO: add strength attribute
-				{"name": "Molibdenov", "formula": "Mo", "charge": [6, 3, 2]}, // TODO: add strength attribute
-				{"name": "Paladijev", "formula": "Pd", "charge": [4, 2]}, // TODO: add strength attribute
-				{"name": "Kadmijev", "formula": "Cd", "charge": [2]}, // TODO: add strength attribute
-				{"name": "Živosrebrov", "formula": "Hg", "charge": [2, 1]}, // TODO: add strength attribute
-				{"name": "Talijev", "formula": "Tl", "charge": [3, 1]}, // TODO: add strength attribute
-				{"name": "Svinčev", "formula": "Pb", "charge": [4, 2]}, // TODO: add strength attribute
-				{"name": "Volframov", "formula": "W", "charge": [6, 4, 3, 2]} // TODO: add strength attribute
+				{"name": "Skandijev", "formula": "Sc", "charge": [3]},
+				{"name": "Titanov", "formula": "Ti", "charge": [4, 3, 2]},
+				{"name": "Vanadijev", "formula": "V", "charge": [5, 4, 3, 2]},
+				{"name": "Kromov", "formula": "Cr", "charge": [6, 3, 2]},
+				{"name": "Manganov", "formula": "Mn", "charge": [7, 4, 3, 2]},
+				{"name": "Železov", "formula": "Fe", "charge": [3, 2]},
+				{"name": "Kobaltov", "formula": "Co", "charge": [3, 2]},
+				{"name": "Nikljev", "formula": "Ni", "charge": [3, 2]},
+				{"name": "Bakrov", "formula": "Cu", "charge": [2, 1]},
+				{"name": "Itrijev", "formula": "Y", "charge": [3]},
+				{"name": "Cikronijev", "formula": "Zr", "charge": [4]},
+				{"name": "Molibdenov", "formula": "Mo", "charge": [6, 3, 2]},
+				{"name": "Paladijev", "formula": "Pd", "charge": [4, 2]},
+				{"name": "Kadmijev", "formula": "Cd", "charge": [2]},
+				{"name": "Živosrebrov", "formula": "Hg", "charge": [2, 1]},
+				{"name": "Talijev", "formula": "Tl", "charge": [3, 1]},
+				{"name": "Svinčev", "formula": "Pb", "charge": [4, 2]},
+				{"name": "Volframov", "formula": "W", "charge": [6, 4, 3, 2]}
 			]
 
 			var pendingPair = getRandomPair(); // the pair currently being displayed
