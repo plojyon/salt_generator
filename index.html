@@ -181,16 +181,22 @@
 				document.getElementById("score").innerHTML = Math.ceil(score); // increment the score
 			}
 			// puts up a new pair and hides the infomation the user is supposed to guess (retrieves settings from DOM)
-			function hidePair(p) {
-				pendingPair = p;
-				document.getElementById("name").innerHTML = p[0];
-				document.getElementById("formula").innerHTML = p[1];
+			function hidePair(newPair) {
+				pendingPair = newPair;
+				var name = newPair[0];
+				var formula = newPair[1];
+
+				document.getElementById("name").innerHTML = name;
+				document.getElementById("formula").innerHTML = formula;
 				var dropdown = document.getElementById("guessing");
 				var guessing = dropdown.options[dropdown.selectedIndex].value;
 				if (guessing == "formula" || (guessing == "random" && Math.random() > 0.5))
 					document.getElementById("formula").innerHTML = "?";
 				else
 					document.getElementById("name").innerHTML = "?";
+
+				// log the solution for cheating purposes
+				console.log(name.split('<sub>').join('').split('</sub>').join('') + " : " + formula.split('<sub>').join('').split('</sub>').join(''));
 			}
 			// generates a random cation-anion pair from the lists defined above
 			function getRandomPair() {
@@ -205,10 +211,6 @@
 
 				var name = cation.name + " " + anion.name;
 				var formula = createFormula(anion, cation);
-
-				// log the solution for cheating purposes
-				console.log(name.split('<sub>').join('').split('</sub>').join('') + " : " + formula.split('<sub>').join('').split('</sub>').join(''));
-
 				return [name, formula];
 			}
 			// reveals the solution of the problem being shown and logs it down
