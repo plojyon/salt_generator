@@ -138,9 +138,7 @@
 				{"name": "Stroncijev", "formula": "Sr", "charge": 2},
 				{"name": "Barijev", "formula": "Ba", "charge": 2},
 				{"name": "Aluminijev", "formula": "Al", "charge": 3},
-				{"name": "Amonijev", "formula": "NH<sub>4</sub>", "charge": 1, "needsParentheses": true},
-				{"name": "Srebrov", "formula": "Ag", "charge": 1},
-				{"name": "Cinkov", "formula": "Zn", "charge": 2}
+				{"name": "Amonijev", "formula": "NH<sub>4</sub>", "charge": 1, "needsParentheses": true}
 			]
 
 			var cations_advanced = [
@@ -161,7 +159,9 @@
 				{"name": "Živosrebrov", "formula": "Hg", "charge": [2, 1]},
 				{"name": "Talijev", "formula": "Tl", "charge": [3, 1]},
 				{"name": "Svinčev", "formula": "Pb", "charge": [4, 2]},
-				{"name": "Volframov", "formula": "W", "charge": [6, 4, 3, 2]}
+				{"name": "Volframov", "formula": "W", "charge": [6, 4, 3, 2]},
+				{"name": "Srebrov", "formula": "Ag", "charge": [1]},
+				{"name": "Cinkov", "formula": "Zn", "charge": [2]}
 			]
 
 			var pendingPair = getRandomPair(); // the pair currently being displayed
@@ -203,16 +203,18 @@
 					cation = {"name": selection.name+"("+romanize(charge)+")", "formula": selection.formula, "charge": charge}; // create a cation object
 				}
 
+				var name = cation.name + " " + anion.name;
 				var formula = createFormula(anion, cation);
 
-				return [cation.name + " " + anion.name, formula];
+				// log the solution for cheating purposes
+				console.log(name.split('<sub>').join('').split('</sub>').join('') + " : " + formula.split('<sub>').join('').split('</sub>').join(''));
+
+				return [name, formula];
 			}
 			// reveals the solution of the problem being shown and logs it down
 			function revealPair(pair) {
 				document.getElementById("name").innerHTML = pair[0];
 				document.getElementById("formula").innerHTML = pair[1];
-				// in case the user double clicks by accident, the log is available
-				console.log(pair[0].split('<sub>').join('').split('</sub>').join('') + " : " + pair[1].split('<sub>').join('').split('</sub>').join(''));
 			}
 			// takes a anion-cation pair and forges them together into a formula
 			// it takes into account the ion charge to calculate the quantities
