@@ -100,31 +100,42 @@
 			}
 
 			// list of anions
-			var anioni = [
-				{"name": "cianid", "formula": "CN", "charge": 1, "needsParentheses": true, "strength": "weak"}, // TODO: Strength?
-				{"name": "sulfid", "formula": "S", "charge": 2},
-				{"name": "hidrogensulfid", "formula": "HS", "charge": 1, "needsParentheses": true},
-				{"name": "nitrat(V)", "formula": "NO<sub>2</sub>", "charge": 1, "needsParentheses": true},
-				{"name": "nitrat(III)", "formula": "NO<sub>3</sub>", "charge": 1, "needsParentheses": true},
-				{"name": "sulfat(VI)", "formula": "SO<sub>4</sub>", "charge": 2, "needsParentheses": true},
-				{"name": "hidrogensulfat(VI)", "formula": "HSO<sub>4</sub>", "charge": 1, "needsParentheses": true},
-				{"name": "sulfat(IV)", "formula": "SO<sub>3</sub>", "charge": 2, "needsParentheses": true},
-				{"name": "hidrogensulfat(IV)", "formula": "HSO<sub>3</sub>", "charge": 1, "needsParentheses": true},
-				{"name": "karbonat", "formula": "CO<sub>3</sub>", "charge": 2, "needsParentheses": true},
-				{"name": "hidrogenkarbonat", "formula": "HCO<sub>3</sub>", "charge": 1, "needsParentheses": true},
-				{"name": "fosfat(V)", "formula": "PO<sub>4</sub>", "charge": 3, "needsParentheses": true},
-				{"name": "hidrogenfosfat(V)", "formula": "HPO<sub>4</sub>", "charge": 2, "needsParentheses": true},
-				{"name": "dihidrogenfosfat(V)", "formula": "H<sub>2</sub>PO<sub>4</sub>", "charge": 1, "needsParentheses": true},
-				{"name": "fosfat(III)", "formula": "PO<sub>3</sub>", "charge": 3, "needsParentheses": true},
-				{"name": "hidrogenfosfat(III)", "formula": "HPO<sub>3</sub>", "charge": 2, "needsParentheses": true},
-				{"name": "dihidrogenfosfat(III)", "formula": "H<sub>2</sub>PO<sub>3</sub>", "charge": 1, "needsParentheses": true},
-				{"name": "klorat(I)", "formula": "ClO", "charge": 1, "needsParentheses": true},
-				{"name": "bromat(I)", "formula": "BrO", "charge": 1, "needsParentheses": true},
-				{"name": "jodat(I)", "formula": "IO", "charge": 1, "needsParentheses": true},
-				{"name": "klorid", "formula": "Cl", "charge": 1},
-				{"name": "bromid", "formula": "Br", "charge": 1},
-				{"name": "jodid", "formula": "I", "charge": 1},
-				{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "charge": 1, "needsParentheses": true}
+			var anions = [
+				{"name": "cianid", "formula": "CN", "charge": 1, "fullname": "cianovodikova", "needsParentheses": true},
+				{"name": "sulfid", "formula": "S", "charge": 2, "fullname": "žveplovodikova"},
+				{"name": "hidrogensulfid", "formula": "HS", "charge": 1, "fullname": "žveplovodikova", "needsParentheses": true},
+				{"name": "nitrat(V)", "formula": "NO<sub>3</sub>", "charge": 1, "fullname": "dušikova (V)", "needsParentheses": true},
+				{"name": "nitrat(III)", "formula": "NO<sub>2</sub>", "charge": 1, "fullname": "dušikova (III)", "needsParentheses": true},
+				{"name": "sulfat(VI)", "formula": "SO<sub>4</sub>", "charge": 2, "fullname": "žveplova (VI)", "needsParentheses": true},
+				{"name": "hidrogensulfat(VI)", "formula": "HSO<sub>4</sub>", "charge": 1, "fullname": "žveplova (VI)", "needsParentheses": true},
+				{"name": "sulfat(IV)", "formula": "SO<sub>3</sub>", "charge": 2, "fullname": "žveplova (IV)", "needsParentheses": true},
+				{"name": "hidrogensulfat(IV)", "formula": "HSO<sub>3</sub>", "charge": 1, "fullname": "žveplova (IV)", "needsParentheses": true},
+				{"name": "karbonat", "formula": "CO<sub>3</sub>", "charge": 2, "fullname": "ogljikova", "needsParentheses": true},
+				{"name": "hidrogenkarbonat", "formula": "HCO<sub>3</sub>", "charge": 1, "fullname": "ogljikova", "needsParentheses": true},
+				{"name": "fosfat(V)", "formula": "PO<sub>4</sub>", "charge": 3, "fullname": "fosforjeva (V)", "needsParentheses": true},
+				{"name": "hidrogenfosfat(V)", "formula": "HPO<sub>4</sub>", "charge": 2, "fullname": "fosforjeva (V)", "needsParentheses": true},
+				{"name": "dihidrogenfosfat(V)", "formula": "H<sub>2</sub>PO<sub>4</sub>", "charge": 1, "fullname": "fosforjeva (V)", "needsParentheses": true},
+				{"name": "fosfat(III)", "formula": "PO<sub>3</sub>", "charge": 3, "fullname": "fosforjeva (III)", "needsParentheses": true},
+				{"name": "hidrogenfosfat(III)", "formula": "HPO<sub>3</sub>", "charge": 2, "fullname": "fosforjeva (III)", "needsParentheses": true},
+				{"name": "dihidrogenfosfat(III)", "formula": "H<sub>2</sub>PO<sub>3</sub>", "charge": 1, "fullname": "fosforjeva (III)", "needsParentheses": true},
+
+				{"name": "klorid", "formula": "Cl", "fullname": "klorovodikova", "charge": 1},
+				{"name": "klorat(I)", "formula": "ClO", "charge": 1, "fullname": "klorova (I)/hipoklorova", "needsParentheses": true},
+				{"name": "klorat(III)", "formula": "ClO<sub>2</sub>", "charge": 1, "fullname": "klorova (III)/klorasta", "needsParentheses": true},
+				{"name": "klorat(V)", "formula": "ClO<sub>3</sub>", "charge": 1, "fullname": "klorova (V)", "needsParentheses": true},
+				{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "charge": 1, "fullname": "klorova (VII)/perklorova", "needsParentheses": true},
+
+				{"name": "bromid", "formula": "Br", "fullname": "bromovodikova", "charge": 1},
+				{"name": "bromat(I)", "formula": "BrO", "charge": 1, "fullname": "bromova (I)/hipobromova", "needsParentheses": true},
+				{"name": "bromat(III)", "formula": "BrO<sub>2</sub>", "charge": 1, "fullname": "bromova (III)/bromasta", "needsParentheses": true},
+				{"name": "bromat(V)", "formula": "BrO<sub>3</sub>", "charge": 1, "fullname": "bromova (V)", "needsParentheses": true},
+				{"name": "bromat(VII)", "formula": "BrO<sub>4</sub>", "charge": 1, "fullname": "bromova (VII)/perbromova", "needsParentheses": true},
+
+				{"name": "jodid", "formula": "I", "fullname": "jodovodikova", "charge": 1},
+				{"name": "jodat(I)", "formula": "IO", "charge": 1, "fullname": "jodova (I)/hipojodova", "needsParentheses": true},
+				{"name": "jodat(III)", "formula": "IO<sub>2</sub>", "charge": 1, "fullname": "jodova (III)/jodasta", "needsParentheses": true},
+				{"name": "jodat(V)", "formula": "IO<sub>3</sub>", "charge": 1, "fullname": "jodova (V)", "needsParentheses": true},
+				{"name": "jodat(VII)", "formula": "IO<sub>4</sub>", "charge": 1, "fullname": "jodova (VII)/perjodova", "needsParentheses": true}
 			]
 
 			// list of common cations
@@ -201,7 +212,7 @@
 			}
 			// generates a random cation-anion pair from the lists defined above
 			function getRandomPair() {
-				var anion = anioni[getRandomInt(0, anioni.length-1)];
+				var anion = anions[getRandomInt(0, anions.length-1)];
 				var cation = cations_common[getRandomInt(0, cations_common.length-1)];
 
 				if (Math.random() > 0.6) { /* 40% chance of uncommon cation */
