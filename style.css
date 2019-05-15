@@ -99,15 +99,17 @@ body {
 
 #postopekPopup {
 	display: none;
-	background-color: red;
+	background-color: aliceblue;
+	border: 5px dashed lightblue;
 }
 
 #postopek:hover > #postopekPopup {
 	display: initial;
 	position: absolute;
-	width: 10em;
-	height: 5em;
-	transform: translate(-100%, -100%);
+	width: 25em;
+	text-align: center;
+	padding: 1em;
+	transform: translate(-50%, -100%);
 }
 
 #postopek {
@@ -173,4 +175,10 @@ body {
 	bottom: 3em;
 	right: 5em;
 	width: 6em;
+}
+
+
+.smol {
+	color: #222;
+	font-size: 0.8em;
 }

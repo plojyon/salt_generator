@@ -41,38 +41,38 @@ var anions = [
 	{"name": "cianid", "formula": "CN", "charge": 1, "fullname": "cianovodikova", "needsParentheses": true},
 	{"name": "sulfid", "formula": "S", "charge": 2, "fullname": "žveplovodikova"},
 	{"name": "hidrogensulfid", "formula": "HS", "charge": 1, "fullname": "žveplovodikova", "needsParentheses": true},
-	{"name": "nitrat(V)", "formula": "NO<sub>3</sub>", "charge": 1, "fullname": "dušikova (V)", "needsParentheses": true},
-	{"name": "nitrat(III)", "formula": "NO<sub>2</sub>", "charge": 1, "fullname": "dušikova (III)", "needsParentheses": true},
-	{"name": "sulfat(VI)", "formula": "SO<sub>4</sub>", "charge": 2, "fullname": "žveplova (VI)", "needsParentheses": true},
-	{"name": "hidrogensulfat(VI)", "formula": "HSO<sub>4</sub>", "charge": 1, "fullname": "žveplova (VI)", "needsParentheses": true},
-	{"name": "sulfat(IV)", "formula": "SO<sub>3</sub>", "charge": 2, "fullname": "žveplova (IV)", "needsParentheses": true},
-	{"name": "hidrogensulfat(IV)", "formula": "HSO<sub>3</sub>", "charge": 1, "fullname": "žveplova (IV)", "needsParentheses": true},
+	{"name": "nitrat (V)", "formula": "NO<sub>3</sub>", "charge": 1, "fullname": "dušikova (V)", "needsParentheses": true},
+	{"name": "nitrat (III)", "formula": "NO<sub>2</sub>", "charge": 1, "fullname": "dušikova (III)", "needsParentheses": true},
+	{"name": "sulfat (VI)", "formula": "SO<sub>4</sub>", "charge": 2, "fullname": "žveplova (VI)", "needsParentheses": true},
+	{"name": "hidrogensulfat (VI)", "formula": "HSO<sub>4</sub>", "charge": 1, "fullname": "žveplova (VI)", "needsParentheses": true},
+	{"name": "sulfat (IV)", "formula": "SO<sub>3</sub>", "charge": 2, "fullname": "žveplova (IV)", "needsParentheses": true},
+	{"name": "hidrogensulfat (IV)", "formula": "HSO<sub>3</sub>", "charge": 1, "fullname": "žveplova (IV)", "needsParentheses": true},
 	{"name": "karbonat", "formula": "CO<sub>3</sub>", "charge": 2, "fullname": "ogljikova", "needsParentheses": true},
 	{"name": "hidrogenkarbonat", "formula": "HCO<sub>3</sub>", "charge": 1, "fullname": "ogljikova", "needsParentheses": true},
-	{"name": "fosfat(V)", "formula": "PO<sub>4</sub>", "charge": 3, "fullname": "fosforjeva (V)", "needsParentheses": true},
-	{"name": "hidrogenfosfat(V)", "formula": "HPO<sub>4</sub>", "charge": 2, "fullname": "fosforjeva (V)", "needsParentheses": true},
-	{"name": "dihidrogenfosfat(V)", "formula": "H<sub>2</sub>PO<sub>4</sub>", "charge": 1, "fullname": "fosforjeva (V)", "needsParentheses": true},
-	{"name": "fosfat(III)", "formula": "PO<sub>3</sub>", "charge": 3, "fullname": "fosforjeva (III)", "needsParentheses": true},
-	{"name": "hidrogenfosfat(III)", "formula": "HPO<sub>3</sub>", "charge": 2, "fullname": "fosforjeva (III)", "needsParentheses": true},
-	{"name": "dihidrogenfosfat(III)", "formula": "H<sub>2</sub>PO<sub>3</sub>", "charge": 1, "fullname": "fosforjeva (III)", "needsParentheses": true},
+	{"name": "fosfat (V)", "formula": "PO<sub>4</sub>", "charge": 3, "fullname": "fosforjeva (V)", "needsParentheses": true},
+	{"name": "hidrogenfosfat (V)", "formula": "HPO<sub>4</sub>", "charge": 2, "fullname": "fosforjeva (V)", "needsParentheses": true},
+	{"name": "dihidrogenfosfat (V)", "formula": "H<sub>2</sub>PO<sub>4</sub>", "charge": 1, "fullname": "fosforjeva (V)", "needsParentheses": true},
+	{"name": "fosfat (III)", "formula": "PO<sub>3</sub>", "charge": 3, "fullname": "fosforjeva (III)", "needsParentheses": true},
+	{"name": "hidrogenfosfat (III)", "formula": "HPO<sub>3</sub>", "charge": 2, "fullname": "fosforjeva (III)", "needsParentheses": true},
+	{"name": "dihidrogenfosfat (III)", "formula": "H<sub>2</sub>PO<sub>3</sub>", "charge": 1, "fullname": "fosforjeva (III)", "needsParentheses": true},
 
 	{"name": "klorid", "formula": "Cl", "fullname": "klorovodikova", "charge": 1},
-	{"name": "klorat(I)", "formula": "ClO", "charge": 1, "fullname": "klorova (I)/hipoklorova", "needsParentheses": true},
-	{"name": "klorat(III)", "formula": "ClO<sub>2</sub>", "charge": 1, "fullname": "klorova (III)/klorasta", "needsParentheses": true},
-	{"name": "klorat(V)", "formula": "ClO<sub>3</sub>", "charge": 1, "fullname": "klorova (V)", "needsParentheses": true},
-	{"name": "klorat(VII)", "formula": "ClO<sub>4</sub>", "charge": 1, "fullname": "klorova (VII)/perklorova", "needsParentheses": true},
+	{"name": "klorat (I)", "formula": "ClO", "charge": 1, "fullname": "klorova (I)/hipoklorova", "needsParentheses": true},
+	{"name": "klorat (III)", "formula": "ClO<sub>2</sub>", "charge": 1, "fullname": "klorova (III)/klorasta", "needsParentheses": true},
+	{"name": "klorat (V)", "formula": "ClO<sub>3</sub>", "charge": 1, "fullname": "klorova (V)", "needsParentheses": true},
+	{"name": "klorat (VII)", "formula": "ClO<sub>4</sub>", "charge": 1, "fullname": "klorova (VII)/perklorova", "needsParentheses": true},
 
 	{"name": "bromid", "formula": "Br", "fullname": "bromovodikova", "charge": 1},
-	{"name": "bromat(I)", "formula": "BrO", "charge": 1, "fullname": "bromova (I)/hipobromova", "needsParentheses": true},
-	{"name": "bromat(III)", "formula": "BrO<sub>2</sub>", "charge": 1, "fullname": "bromova (III)/bromasta", "needsParentheses": true},
-	{"name": "bromat(V)", "formula": "BrO<sub>3</sub>", "charge": 1, "fullname": "bromova (V)", "needsParentheses": true},
-	{"name": "bromat(VII)", "formula": "BrO<sub>4</sub>", "charge": 1, "fullname": "bromova (VII)/perbromova", "needsParentheses": true},
+	{"name": "bromat (I)", "formula": "BrO", "charge": 1, "fullname": "bromova (I)/hipobromova", "needsParentheses": true},
+	{"name": "bromat (III)", "formula": "BrO<sub>2</sub>", "charge": 1, "fullname": "bromova (III)/bromasta", "needsParentheses": true},
+	{"name": "bromat (V)", "formula": "BrO<sub>3</sub>", "charge": 1, "fullname": "bromova (V)", "needsParentheses": true},
+	{"name": "bromat (VII)", "formula": "BrO<sub>4</sub>", "charge": 1, "fullname": "bromova (VII)/perbromova", "needsParentheses": true},
 
 	{"name": "jodid", "formula": "I", "fullname": "jodovodikova", "charge": 1},
-	{"name": "jodat(I)", "formula": "IO", "charge": 1, "fullname": "jodova (I)/hipojodova", "needsParentheses": true},
-	{"name": "jodat(III)", "formula": "IO<sub>2</sub>", "charge": 1, "fullname": "jodova (III)/jodasta", "needsParentheses": true},
-	{"name": "jodat(V)", "formula": "IO<sub>3</sub>", "charge": 1, "fullname": "jodova (V)", "needsParentheses": true},
-	{"name": "jodat(VII)", "formula": "IO<sub>4</sub>", "charge": 1, "fullname": "jodova (VII)/perjodova", "needsParentheses": true}
+	{"name": "jodat (I)", "formula": "IO", "charge": 1, "fullname": "jodova (I)/hipojodova", "needsParentheses": true},
+	{"name": "jodat (III)", "formula": "IO<sub>2</sub>", "charge": 1, "fullname": "jodova (III)/jodasta", "needsParentheses": true},
+	{"name": "jodat (V)", "formula": "IO<sub>3</sub>", "charge": 1, "fullname": "jodova (V)", "needsParentheses": true},
+	{"name": "jodat (VII)", "formula": "IO<sub>4</sub>", "charge": 1, "fullname": "jodova (VII)/perjodova", "needsParentheses": true}
 ]
 
 // list of common cations
@@ -162,17 +162,19 @@ function hidePair(newPair) {
 }
 // generates a random cation-anion pair from the lists defined above
 function getRandomPair() {
+	if (isPending) return;
 	var anion = anions[getRandomInt(0, anions.length-1)];
 	var cation = cations_common[getRandomInt(0, cations_common.length-1)];
 
 	if (Math.random() > 0.6) { /* 40% chance of uncommon cation */
 		var selection = cations_advanced[getRandomInt(0, cations_common.length-1)]; // get a random uncommon cation from the list
 		var charge = selection.charge[getRandomInt(0, selection.charge.length-1)]; // pick a random charge of all available charges
-		cation = {"name": selection.name+"("+romanize(charge)+")", "formula": selection.formula, "charge": charge}; // create a cation object
+		cation = {"name": selection.name+" ("+romanize(charge)+")", "formula": selection.formula, "charge": charge}; // create a cation object
 	}
 
 	var name = cation.name + " " + anion.name;
 	var formula = createFormula(anion, cation);
+	generatePostopek(anion, cation, formula);
 	return [name, formula];
 }
 // reveals the solution of the problem
@@ -212,4 +214,47 @@ function createFormula(anion, cation) {
 	}
 
 	return ca + an;
+}
+
+
+function generatePostopek(anion, cation, formula) {
+	console.log(anion, cation, formula)
+	var veckratnik = lcm(Math.abs(anion.charge), Math.abs(cation.charge));
+	var chargeAnion  = veckratnik /  anion.charge;
+	var chargeCation = veckratnik / cation.charge;
+
+	var postopek = "";
+
+	if (chargeCation != 1) postopek += chargeCation;
+	postopek += cation.formula
+	if (cation.charge != 1) postopek += "(OH)<sub>"+cation.charge+"</sub>";
+	else postopek +="OH";
+
+	postopek += " + ";
+
+	if (chargeAnion != 1) postopek += chargeAnion;
+	if (!anion.formula.startsWith("H")) {
+		postopek += "H";
+		if (anion.charge != 1) postopek += "<sub>"+anion.charge+"</sub>";
+		postopek += anion.formula;
+	}
+	else if (anion.formula.startsWith("H<")) {
+		var charge = Number(anion.charge) + Number(anion.formula.slice(6, 7).slice(0,1));
+		postopek += "H<sub>"+charge+"</sub>"+anion.formula.slice(13);
+	}
+	else {
+		var charge = Number(anion.charge) + 1;
+		postopek += "H<sub>"+charge+"</sub>"+anion.formula.slice(1);
+	}
+
+	postopek += " ⟶ ";
+
+	postopek += formula+" + "
+	var waterCount = (Number(cation.charge)*Number(chargeCation));
+	if (waterCount != 1) {
+		postopek += waterCount;
+	}
+	postopek += "H<sub>2</sub>O";
+
+	document.getElementById("postopekPopup").innerHTML = postopek+"<br><p class='smol'>"+cation.name+" hidroksid + "+anion.fullname+" kislina ⟶ "+cation.name+" "+anion.name+" + voda<p>";
 }
